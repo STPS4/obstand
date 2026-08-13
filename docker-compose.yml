@@ -1,0 +1,38 @@
+services:
+  users:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: users
+    environment:
+      ADDR: ":8081"
+    ports:
+      - "8081:8081"
+
+  orders:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: orders
+    environment:
+      ADDR: ":8082"
+    ports:
+      - "8082:8082"
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: gateway
+    environment:
+      ADDR: ":8080"
+      USERS_URL: "http://users:8081"
+      ORDERS_URL: "http://orders:8082"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - users
+      - orders
