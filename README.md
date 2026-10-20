@@ -98,3 +98,5 @@ docker compose down
    необходимые для его обнаружения».
 3. Observability stack (Prometheus, Grafana, Loki, Jaeger),
    спроектированный по требованиям из п.2.
+
+Результаты экспериментов: [experiments/README.md](experiments/README.md)

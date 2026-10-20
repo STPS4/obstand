@@ -1,0 +1,8 @@
+[
+  {
+    "name": "users",
+    "listen": "0.0.0.0:8666",
+    "upstream": "users:8081",
+    "enabled": true
+  }
+]
