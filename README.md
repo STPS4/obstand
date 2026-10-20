@@ -90,11 +90,11 @@ docker compose down
 
 ## Дальнейшие шаги
 
-В следующих итерациях стенда планируется добавить:
+Текущая версия — рабочая среда (шаг 0). Порядок дальнейшей работы:
 
-- Prometheus + Grafana для сбора и визуализации метрик
-- параллельные вызовы users и orders в gateway через `errgroup`
-- unit-тесты и GitHub Actions (build, test, golangci-lint)
-- Loki + Promtail для централизованного сбора логов
-- Jaeger + OpenTelemetry для распределённого трейсинга
-- toxiproxy для fault injection между сервисами
+1. Fault injection руками: toxiproxy на канале gateway → users,
+   Pumba для kill/pause контейнеров и L3-потерь через netem.
+2. По результатам экспериментов — таблица «класс отказа → сигналы,
+   необходимые для его обнаружения».
+3. Observability stack (Prometheus, Grafana, Loki, Jaeger),
+   спроектированный по требованиям из п.2.
